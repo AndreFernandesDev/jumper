@@ -15,11 +15,13 @@ public class ProgressManager : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         rowsize = sceneCamera.orthographicSize / rows;
-        Debug.Log("Screen Size" + Screen.width);
-        Debug.Log("Row Size: " + rowSize);
-        Debug.Log("Rows: " + rows);
-        Debug.Log("Calculated Position" + CalculateMonkeyPosition(1));
-
+        // Debug.Log("Screen Size" + Screen.width);
+        // Debug.Log("Row Size: " + rowSize);
+        // Debug.Log("Rows: " + rows);
+        // Debug.Log("pixelWidth: " + sceneCamera.pixelWidth);
+        // Debug.Log("pixelHeight: " + sceneCamera.pixelHeight);
+        float camWidth = CalculateCameraWidth(sceneCamera);
+        Debug.Log("actualCamWidth: " + camWidth);
         monkeyTransform.position = new Vector2(CalculateMonkeyPosition(1), 0);
 
     }
@@ -30,7 +32,13 @@ public class ProgressManager : MonoBehaviour
     }
 
     float CalculateMonkeyPosition(int row) {
-        float negativeDiscount = (sceneCamera.orthographicSize / 2) * -1;
-        return (rowSize * row) - (rowSize / 2) + negativeDiscount;
+        return row * 10;
     }
+
+    float CalculateCameraWidth(Camera cam) {
+        // Debug.Log("aspect: " + cam.aspect);
+        // Debug.Log("size: " + cam.orthographicSize * 2);
+        return (cam.orthographicSize * 2) * cam.aspect;
+    }
+
 }
