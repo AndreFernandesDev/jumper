@@ -305,5 +305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rows: 3
+  monkeyrow: 1
   monkeyTransform: {fileID: 876844972}
   sceneCamera: {fileID: 18701953}
